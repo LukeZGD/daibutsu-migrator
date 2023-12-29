@@ -1,0 +1,25 @@
+#!/bin/bash
+
+OS=`sysctl -n kern.osversion`
+PROD=`sysctl -n hw.machine`
+
+case $PROD in
+  iPhone4,1 | iPad2* | iPad3,[123] | iPod5,1 )
+    case $OS in
+      12[ABD]* )
+        echo "This version ($OS) is broken for daibutsu A5(X)."
+        echo "Supported iOS 8 versions for A5(X) are 8.3 to 8.4.1 only for now."
+        exit 1
+      ;;
+    esac
+  ;;
+esac
+
+case "$1" in
+  install|upgrade )
+    if [[ -e /.installed_daibutsu ]]; then
+      echo "daibutsu untether is already installed, cannot continue."
+      exit 1
+    fi
+  ;;
+esac

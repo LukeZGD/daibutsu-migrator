@@ -1,0 +1,58 @@
+#!/bin/bash
+
+case "$1" in
+  configure)
+    :
+  ;;
+  abort-upgrade|abort-remove|abort-configure)
+    exit 0
+  ;;
+  *)
+    echo "postinst called with unknown argument '$1'" 1>&2
+    exit 1
+  ;;
+esac
+
+echo "Removing files"
+if [[ -d /untether ]]; then
+    rm -f /usr/libexec/rtbuddyd
+fi
+rm -rf /.cydia_no_stash /.installed-openpwnage /.installed_home_depot /--early-boot /untether \
+       /private/etc/apt/sources.list.d/net.tihmstar.list \
+       /private/etc/rc.d/daemonload /usr/bin/orphan_commander \
+       /private/var/lib/dpkg/info/net.tihmstar.etasonuntether*
+
+echo "Modify fstab"
+echo "/dev/disk0s1s1 / hfs ro 0 1
+/dev/disk0s1s2 /private/var hfs rw,nodev 0 2" | tee /private/etc/fstab
+
+echo "Modifying dpkg status"
+sed -i '/Package: net.tihmstar.etasonuntether/{N;N;N;N;N;N;N;N;N;N;N;N;N;N;N;N;N;N;N;N;N;N;N;N;N;N;N;N;N;N;N;N;N;N;N;N;N;d;}' /private/var/lib/dpkg/status
+
+echo "Moving files"
+if [[ -e /usr/libexec/rtbuddyd.orig ]]; then
+    mv /usr/libexec/rtbuddyd.orig /usr/libexec/rtbuddyd
+fi
+mv /usr/libexec/CrashHousekeeping /usr/libexec/CrashHousekeeping_o
+mv /Library/LaunchDaemons/* /System/Library/LaunchDaemons
+rm -rf /Library/LaunchDaemons
+mv /System/Library/LaunchDaemons /Library/LaunchDaemons
+mv /System/Library/NanoLaunchDaemons /Library/NanoLaunchDaemons 2>/dev/null
+mkdir -p /System/Library/LaunchDaemons
+mv /Library/LaunchDaemons/bootps.plist /System/Library/LaunchDaemons/bootps.plist
+mv /Library/LaunchDaemons/com.apple.CrashHousekeeping.plist /System/Library/LaunchDaemons/com.apple.CrashHousekeeping.plist
+mv /Library/LaunchDaemons/com.apple.MobileFileIntegrity.plist /System/Library/LaunchDaemons/com.apple.MobileFileIntegrity.plist
+mv /Library/LaunchDaemons/com.apple.mDNSResponder.plist /System/Library/LaunchDaemons/com.apple.mDNSResponder.plist_
+mv /Library/LaunchDaemons/com.apple.mobile.softwareupdated.plist /System/Library/LaunchDaemons/com.apple.mobile.softwareupdated.plist_
+mv /Library/LaunchDaemons/com.apple.softwareupdateservicesd.plist /System/Library/LaunchDaemons/com.apple.softwareupdateservicesd.plist_
+mv /Library/LaunchDaemons/com.apple.jetsamproperties.*.plist /System/Library/LaunchDaemons
+
+echo "Extracting untether"
+tar -xvf /tmp/untether.tar -C /
+sync
+
+echo "Running haxx_overwrite"
+OS=`sysctl -n kern.osversion`
+PROD=`sysctl -n hw.machine`
+ln -sf / /mnt1
+/tmp/haxx_overwrite --${PROD}_${OS}
