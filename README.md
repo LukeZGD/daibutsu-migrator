@@ -7,13 +7,15 @@
 
 The latest daibutsu untether by kok3shidoll/dora and Clarity is compatible with all 32-bit devices iOS 8.0 to 8.4.1.
 
-How to install daibutsu migrator:
+### How to install daibutsu migrator
 
-- Upgrade all packages in Cydia
-- Add my repo: https://lukezgd.github.io/repo
-- Install "daibutsu migrator"
-- After the device reboots, open Cydia
-- After the respring, open Cydia again and remove "daibutsu migrator"
-- The migration process is complete, your device is now jailbroken with daibutsu
+1. Upgrade all packages in Cydia
+1. Add my repo: https://lukezgd.github.io/repo
+1. Install "daibutsu migrator"
+1. After the device reboots, open Cydia
+1. After the respring, open Cydia again and remove "daibutsu migrator"
+1. The migration process is complete, your device is now jailbroken with daibutsu
 
-NOTE: A5(X) support is limited to 8.3 to 8.4.1 only for now. A6(X) is fully supported for 8.0 to 8.4.1
+### Notes
+- A5(X) support is limited to 8.3 to 8.4.1 only for now. A6(X) is fully supported for 8.0 to 8.4.1.
+- Currently, the only way to jailbreak A6(X) devices on 8.0 to 8.4 is to use [Legacy iOS Kit](https://github.com/LukeZGD/Legacy-iOS-Kit) for installing daibutsu.
