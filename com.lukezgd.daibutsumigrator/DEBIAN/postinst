@@ -24,7 +24,7 @@ rm -rf /.cydia_no_stash /.installed-openpwnage /.installed_home_depot /--early-b
 
 echo "Modify fstab"
 echo "/dev/disk0s1s1 / hfs ro 0 1
-/dev/disk0s1s2 /private/var hfs rw,nodev 0 2" | tee /private/etc/fstab
+/dev/disk0s1s2 /private/var hfs rw,nodev 0 2" > /private/etc/fstab
 
 echo "Modifying dpkg status"
 sed -i '/Package: net.tihmstar.etasonuntether/{N;N;N;N;N;N;N;N;N;N;N;N;N;N;N;N;N;N;N;N;N;N;N;N;N;N;N;N;N;N;N;N;N;N;N;N;N;d;}' /private/var/lib/dpkg/status
