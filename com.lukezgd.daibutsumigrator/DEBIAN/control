@@ -1,10 +1,10 @@
 Package: com.lukezgd.daibutsumigrator
 Name: daibutsu migrator
-Version: 2.0.3-1
+Version: 2.0.3-2
 Architecture: iphoneos-arm
 Depends: firmware (>= 8.0), firmware (<= 8.4.1), uikittools (>= 1.1.10)
 Conflicts: cy+cpu.arm64, io.pangu.xuanyuansword8, taiguntether83x, net.tihmstar.daemonloader
-Description: Migrate from EtasonJB/HomeDepot/openpwnage to daibutsu untether. Remove this package after the migration process. Warning: There may be a small risk of bootloop, backup your data before installing.
+Description: Migrate from EtasonJB/HomeDepot/openpwnage to daibutsu untether. Remove this package after the migration process.
 Author: LukeZGD
 Maintainer: LukeZGD
 Section: System

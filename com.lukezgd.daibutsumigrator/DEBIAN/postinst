@@ -17,7 +17,7 @@ echo "Removing files"
 if [[ -d /untether ]]; then
     rm -f /usr/libexec/rtbuddyd
 fi
-rm -rf /.cydia_no_stash /.installed-openpwnage /.installed_home_depot /--early-boot /untether \
+rm -rf /.cydia_no_stash /.installed_everpwnage /.installed-openpwnage /.installed_home_depot /--early-boot /untether \
        /private/etc/apt/sources.list.d/net.tihmstar.list \
        /private/etc/rc.d/daemonload /usr/bin/orphan_commander \
        /private/var/lib/dpkg/info/net.tihmstar.etasonuntether*
