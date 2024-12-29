@@ -1,14 +1,15 @@
 #!/bin/bash
 
-OS=`sysctl -n kern.osversion`
-PROD=`sysctl -n hw.machine`
+OS=`/usr/sbin/sysctl -n kern.osversion`
+PROD=`/usr/sbin/sysctl -n hw.machine`
 
 case $PROD in
   iPhone4,1 | iPad2* | iPad3,[123] | iPod5,1 )
     case $OS in
       12[ABD]* )
-        echo "This version ($OS) is broken for daibutsu A5(X)."
-        echo "Supported iOS 8 versions for A5(X) are 8.3 to 8.4.1 only for now."
+        echo "This version ($OS) is not supported for A5(X)."
+        echo "Supported iOS 8 versions for A5(X) are 8.3 to 8.4.1 only."
+        echo "For this device/version, use EverUntether instead."
         exit 1
       ;;
     esac

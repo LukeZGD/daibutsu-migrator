@@ -13,6 +13,9 @@ case "$1" in
   ;;
 esac
 
+declare -a cydia
+cydia=($CYDIA)
+
 echo "Removing files"
 if [[ -d /untether ]]; then
     rm -f /usr/libexec/rtbuddyd
@@ -52,7 +55,11 @@ tar -xvf /tmp/untether.tar -C /
 sync
 
 echo "Running haxx_overwrite"
-OS=`sysctl -n kern.osversion`
-PROD=`sysctl -n hw.machine`
-ln -sf / /mnt1
+OS=`/usr/sbin/sysctl -n kern.osversion`
+PROD=`/usr/sbin/sysctl -n hw.machine`
 /tmp/haxx_overwrite --${PROD}_${OS}
+
+echo "Please reboot your device! You may now remove daibutsu migrator after rebooting."
+if [[ ${CYDIA+@} ]]; then
+    eval "echo 'finish:reboot' >&${cydia[0]}"
+fi
