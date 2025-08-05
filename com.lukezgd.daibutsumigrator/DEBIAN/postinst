@@ -20,7 +20,7 @@ echo "Removing files"
 if [[ -d /untether ]]; then
     rm -f /usr/libexec/rtbuddyd
 fi
-rm -rf /.cydia_no_stash /.installed_everpwnage /.installed-openpwnage /.installed_home_depot /--early-boot /untether \
+rm -rf /.installed_everpwnage /.installed-openpwnage /.installed_home_depot /--early-boot /untether \
        /private/etc/apt/sources.list.d/net.tihmstar.list \
        /private/etc/rc.d/daemonload /usr/bin/orphan_commander \
        /private/var/lib/dpkg/info/net.tihmstar.etasonuntether*
@@ -51,13 +51,14 @@ mv /Library/LaunchDaemons/com.apple.softwareupdateservicesd.plist /System/Librar
 mv /Library/LaunchDaemons/com.apple.jetsamproperties.*.plist /System/Library/LaunchDaemons
 
 echo "Extracting untether"
-tar -xvf /tmp/untether.tar -C /
+/usr/bin/tar -xvf /tmp/untether.tar -C /
 sync
 
 echo "Running haxx_overwrite"
 OS=`/usr/sbin/sysctl -n kern.osversion`
 PROD=`/usr/sbin/sysctl -n hw.machine`
-/tmp/haxx_overwrite --${PROD}_${OS}
+/usr/bin/ldid -S /usr/bin/haxx_overwrite
+/usr/bin/haxx_overwrite --${PROD}_${OS}
 
 echo "Please reboot your device! You may now remove daibutsu migrator after rebooting."
 if [[ ${CYDIA+@} ]]; then
