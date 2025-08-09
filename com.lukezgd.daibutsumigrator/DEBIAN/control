@@ -1,6 +1,6 @@
 Package: com.lukezgd.daibutsumigrator
 Name: daibutsu migrator
-Version: 2.0.3-4
+Version: 2.0.3-5
 Architecture: iphoneos-arm
 Depends: firmware (>= 8.0), firmware (<= 8.4.1), uikittools (>= 1.1.10)
 Conflicts: cy+cpu.arm64, io.pangu.xuanyuansword8, taiguntether83x, net.tihmstar.daemonloader, com.lukezgd.everuntether
