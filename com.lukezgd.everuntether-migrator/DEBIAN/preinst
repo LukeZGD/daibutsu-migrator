@@ -9,7 +9,7 @@ case $PROD in
       12[ABD]* )
         echo "This version ($OS) is not supported for A5(X)."
         echo "Supported iOS 8 versions for A5(X) are 8.3 to 8.4.1 only."
-        echo "For this device/version, use EverUntether instead."
+        echo "For this device/version, use EverUntether Package instead."
         exit 1
       ;;
     esac
@@ -18,8 +18,8 @@ esac
 
 case "$1" in
   install|upgrade )
-    if [[ -e /daibutsu ]]; then
-      echo "daibutsu untether is already installed, cannot continue."
+    if [[ -L /usr/libexec/CrashHousekeeping ]]; then
+      echo "daibutsu/EverUntether is already installed, cannot continue."
       exit 1
     fi
   ;;

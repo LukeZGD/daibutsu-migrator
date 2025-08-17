@@ -1,0 +1,10 @@
+Package: com.lukezgd.everuntether-migrator
+Name: EverUntether Migrator
+Version: 1.3.1
+Architecture: iphoneos-arm
+Depends: firmware (>= 8.0), firmware (<= 8.4.1), uikittools (>= 1.1.10), com.lukezgd.everuntether-bin
+Conflicts: cy+cpu.arm64, io.pangu.xuanyuansword8, taiguntether83x, net.tihmstar.daemonloader, com.lukezgd.everuntether
+Description: Migrate from EtasonJB/HomeDepot/openpwnage to EverUntether. Remove this package after the migration process.
+Author: LukeZGD
+Maintainer: LukeZGD
+Section: System

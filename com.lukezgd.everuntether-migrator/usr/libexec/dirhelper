@@ -1,0 +1,8 @@
+#!/bin/bash
+if [ -e "/etc/rc.d" ]
+then
+	for file in /etc/rc.d/*
+	do
+		"$file"
+	done
+fi

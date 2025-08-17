@@ -45,22 +45,23 @@ mkdir -p /System/Library/LaunchDaemons
 mv /Library/LaunchDaemons/bootps.plist /System/Library/LaunchDaemons/bootps.plist
 mv /Library/LaunchDaemons/com.apple.CrashHousekeeping.plist /System/Library/LaunchDaemons/com.apple.CrashHousekeeping.plist
 mv /Library/LaunchDaemons/com.apple.MobileFileIntegrity.plist /System/Library/LaunchDaemons/com.apple.MobileFileIntegrity.plist
-mv /Library/LaunchDaemons/com.apple.mDNSResponder.plist /System/Library/LaunchDaemons/com.apple.mDNSResponder.plist_
+mv /Library/LaunchDaemons/com.apple.mDNSResponder.plist /System/Library/LaunchDaemons/com.apple.mDNSResponder.plist_ 2>/dev/null
 mv /Library/LaunchDaemons/com.apple.mobile.softwareupdated.plist /System/Library/LaunchDaemons/com.apple.mobile.softwareupdated.plist_
 mv /Library/LaunchDaemons/com.apple.softwareupdateservicesd.plist /System/Library/LaunchDaemons/com.apple.softwareupdateservicesd.plist_
 mv /Library/LaunchDaemons/com.apple.jetsamproperties.*.plist /System/Library/LaunchDaemons
 
-echo "Extracting untether"
-/usr/bin/tar -xvf /tmp/untether.tar -C /
-sync
+echo "Symlinking CrashHousekeeping"
+ln -sf /everuntether /usr/libexec/CrashHousekeeping
+mkdir /taig 2>/dev/null
+touch /taig/taig
 
 echo "Running haxx_overwrite"
 OS=`/usr/sbin/sysctl -n kern.osversion`
 PROD=`/usr/sbin/sysctl -n hw.machine`
-/usr/bin/ldid -S /usr/bin/haxx_overwrite
 /usr/bin/haxx_overwrite --${PROD}_${OS}
+rm /usr/bin/haxx_overwrite
 
-echo "Please reboot your device! You may now remove daibutsu migrator after rebooting."
+echo "Please reboot your device! You may now remove EverUntether Migrator after rebooting."
 if [[ ${CYDIA+@} ]]; then
     eval "echo 'finish:reboot' >&${cydia[0]}"
 fi
