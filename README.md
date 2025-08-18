@@ -1,18 +1,18 @@
-# daibutsu migrator
+# EverUntether Migrator
 
-- Migrate to daibutsu untether from other 32-bit iOS 8 jailbreaks
-- Main script is in `com.lukezgd.daibutsumigrator/DEBIAN/postinst`
+- Migrate to EverUntether from other 32-bit iOS 8 jailbreaks
+- Main script is in `com.lukezgd.everuntether-migrator/DEBIAN/postinst`
 - It is recommended to just use [EverPwnage](https://github.com/LukeZGD/EverPwnage) instead
 
-"daibutsu migrator" installs the latest [daibutsu untether](https://kok3shidoll.github.io/info/jp.daibutsu.untether841/indexv2.html) to devices that are already jailbroken with EtasonJB, [Home Depot](https://github.com/LukeZGD/ohd), or openpwnage.
+"EverUntether Migrator" installs the latest [EverUntether](https://github.com/LukeZGD/daibutsu) to iOS 8 devices that are already jailbroken with EtasonJB, [Home Depot](https://github.com/LukeZGD/ohd), or openpwnage.
 
-The latest daibutsu untether by kok3shidoll/dora and Clarity is compatible with iOS 8.0-8.4.1. A6(X) is fully supported, while A5(X) support is limited to 8.3-8.4.1 only.
+This is not compatible with A5(X) devices on iOS 8.0-8.2, use "EverUntether Package" instead.
 
-### How to install daibutsu migrator
+### How to install EverUntether Migrator
 
 1. Upgrade all packages in Cydia
 1. Add my repo: https://lukezgd.github.io/repo
-1. Install "daibutsu migrator"
+1. Install "EverUntether Migrator"
 1. After the device reboots, open Cydia
-1. After the respring, open Cydia again and remove "daibutsu migrator"
-1. The migration process is complete, your device is now jailbroken with daibutsu
+1. After the respring, open Cydia again and remove "EverUntether Migrator"
+1. The migration process is complete, your device is now jailbroken with EverUntether
